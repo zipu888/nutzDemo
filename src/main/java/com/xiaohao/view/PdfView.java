@@ -20,6 +20,6 @@ public class PdfView implements View{
      */
     @Override
     public void render(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Throwable {
-
+        httpServletResponse.sendRedirect("http://www.baidu.com");
     }
 }
