@@ -27,7 +27,7 @@ public class UserModule {
     }
 //jsp:user/test  回访会 user/test.jsp    定义了jsp 默认扩展名就是 jsp
     @At("/test/?")
-    @Ok("jsp:user/test")
+    @Ok("json")
     public User test( int id){
 
      User user =userService.findUserById(id);

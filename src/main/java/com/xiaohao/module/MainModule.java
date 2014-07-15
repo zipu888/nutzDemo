@@ -1,6 +1,8 @@
 package com.xiaohao.module;
 
 import com.xiaohao.setup.MyAppSetup;
+import com.xiaohao.view.PdfView;
+import com.xiaohao.view.PdfViewmaker;
 import org.nutz.mvc.annotation.*;
 import org.nutz.mvc.ioc.provider.ComboIocProvider;
 
@@ -16,6 +18,8 @@ import org.nutz.mvc.ioc.provider.ComboIocProvider;
 //**声明模块 只扫描主模块下的
 // @Modules(value = UserModule.class)
 @Modules(scanPackage = true)
+//自定义视图对象的视图工厂需要 在这里标注
+@Views(PdfViewmaker.class)
 @Encoding(input="UTF-8",output="UTF-8")
 @SetupBy(MyAppSetup.class)
 public class MainModule {
