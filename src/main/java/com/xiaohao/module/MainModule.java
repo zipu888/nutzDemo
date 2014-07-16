@@ -17,6 +17,7 @@ import org.nutz.mvc.ioc.provider.ComboIocProvider;
         "*org.nutz.ioc.loader.annotation.AnnotationIocLoader","com.xiaohao"})
 //**声明模块 只扫描主模块下的
 // @Modules(value = UserModule.class)
+// 声明自己的session provider @SessionBy(NopSessionProvider.class)
 @Modules(scanPackage = true)
 //自定义视图对象的视图工厂需要 在这里标注
 @Views(PdfViewmaker.class)
