@@ -17,8 +17,14 @@ public class LogInterceptor implements MethodInterceptor {
     public void filter(InterceptorChain interceptorChain) throws Throwable {
         //方法执行前
         System.out.println("before");
+        //可以取得这些多
+        String methodName =interceptorChain.getCallingMethod().getName();
+        interceptorChain.getArgs();
+        interceptorChain.getCallingObj();
+        interceptorChain.getMethodInterceptors();
+        interceptorChain.getReturn();
         interceptorChain.doChain();
         //方法执行后
-        System.out.println("after");
+        System.out.println("after"+"  "+methodName);
     }
 }
