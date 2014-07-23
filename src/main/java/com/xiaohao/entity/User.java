@@ -15,6 +15,12 @@ public class User implements Serializable {
     private int id;
 
     @Column
+    private int masterId;
+
+    @One(target = Master.class, field = "masterId")
+    private Master master;
+
+    @Column
     @ColDefine(type = ColType.VARCHAR, width = 20)
     private String name;
 
@@ -51,5 +57,21 @@ public class User implements Serializable {
 
     public void setRole(List<Role> role) {
         this.role = role;
+    }
+
+    public int getMasterId() {
+        return masterId;
+    }
+
+    public void setMasterId(int masterId) {
+        this.masterId = masterId;
+    }
+
+    public Master getMaster() {
+        return master;
+    }
+
+    public void setMaster(Master master) {
+        this.master = master;
     }
 }

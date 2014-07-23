@@ -23,7 +23,12 @@ public class LogInterceptor implements MethodInterceptor {
         interceptorChain.getCallingObj();
         interceptorChain.getMethodInterceptors();
         interceptorChain.getReturn();
-        interceptorChain.doChain();
+        try{
+            interceptorChain.doChain();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
         //方法执行后
         System.out.println("after"+"  "+methodName);
     }

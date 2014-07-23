@@ -18,5 +18,16 @@ var ioc={
         args : [ {
             refer : 'dataSource'
         } ]
+    },
+    redisConfig:{
+        type:"com.xiaohao.redis.RedisConfig",
+        fields:{
+            host : '192.168.1.9',
+            port : 6379
+        }
+    },
+    jedis:{
+        type:"redis.clients.jedis.Jedis",
+        args:['127.0.0.1']
     }
 }
