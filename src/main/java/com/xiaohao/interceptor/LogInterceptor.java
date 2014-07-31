@@ -29,6 +29,7 @@ public class LogInterceptor implements MethodInterceptor {
             System.out.println(e.getMessage());
         }
 
+
         //方法执行后
         System.out.println("after"+"  "+methodName);
     }
