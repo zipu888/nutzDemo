@@ -21,10 +21,6 @@ import java.util.List;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.beanutils.converters.DateConverter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.util.Assert;
-
 /**
  * 反射工具类.
  * 
@@ -34,7 +30,6 @@ import org.springframework.util.Assert;
  */
 public class ReflectionUtils {
 
-	private static Logger logger = LoggerFactory.getLogger(ReflectionUtils.class);
 
 	static {
 		DateConverter dc = new DateConverter();
@@ -85,7 +80,6 @@ public class ReflectionUtils {
 		try {
 			result = field.get(object);
 		} catch (IllegalAccessException e) {
-			logger.error("不可能抛出的异常{}", e.getMessage());
 		}
 		return result;
 	}
@@ -105,7 +99,6 @@ public class ReflectionUtils {
 		try {
 			field.set(object, value);
 		} catch (IllegalAccessException e) {
-			logger.error("不可能抛出的异常:{}", e.getMessage());
 		}
 	}
 
@@ -134,8 +127,6 @@ public class ReflectionUtils {
 	 * 如向上转型到Object仍无法找到, 返回null.
 	 */
 	protected static Field getDeclaredField(final Object object, final String fieldName) {
-		Assert.notNull(object, "object不能为空");
-		Assert.hasText(fieldName, "fieldName");
 		for (Class<?> superClass = object.getClass(); superClass != Object.class; superClass = superClass
 				.getSuperclass()) {
 			try {
@@ -162,7 +153,6 @@ public class ReflectionUtils {
 	 * 如向上转型到Object仍无法找到, 返回null.
 	 */
 	protected static Method getDeclaredMethod(Object object, String methodName, Class<?>[] parameterTypes) {
-		Assert.notNull(object, "object不能为空");
 
 		for (Class<?> superClass = object.getClass(); superClass != Object.class; superClass = superClass
 				.getSuperclass()) {
@@ -205,19 +195,15 @@ public class ReflectionUtils {
 		Type genType = clazz.getGenericSuperclass();
 
 		if (!(genType instanceof ParameterizedType)) {
-			logger.warn(clazz.getSimpleName() + "'s superclass not ParameterizedType");
 			return Object.class;
 		}
 
 		Type[] params = ((ParameterizedType) genType).getActualTypeArguments();
 
 		if (index >= params.length || index < 0) {
-			logger.warn("Index: " + index + ", Size of " + clazz.getSimpleName() + "'s Parameterized Type: "
-					+ params.length);
 			return Object.class;
 		}
 		if (!(params[index] instanceof Class)) {
-			logger.warn(clazz.getSimpleName() + " not set the actual class on superclass generic parameter");
 			return Object.class;
 		}
 

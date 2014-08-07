@@ -1,6 +1,5 @@
 package com.xiaohao.Utils;
 
-import org.springframework.util.Assert;
 
 /**
  * <strong>PinyinUtil</strong><br>
@@ -43,7 +42,6 @@ public class PinyinUtil
 	 */
 	public static String firstLetterOfString(String str)
 	{
-		Assert.hasText(str);
 		String first = str.substring(0,1);
 		return cn2py(first).toUpperCase();
 	}

@@ -24,7 +24,6 @@ public class ArrayUtils {
 	 * @param keys
 	 * @return
 	 */
-	@SuppressWarnings("all")
 	public static Map toMap(Object[] array,String...keys) {
 		if(array == null) return new HashMap();
 		Map m = new LinkedHashMap();

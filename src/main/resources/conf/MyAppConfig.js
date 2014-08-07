@@ -8,7 +8,7 @@ var ioc={
             depose : 'close'
         },
         fields : {
-            url : "jdbc:mysql://127.0.0.1:3306/platform?useUnicode=true&characterEncoding=utf-8",
+            url : "jdbc:mysql://127.0.0.1:8066/platform?useUnicode=true&characterEncoding=utf-8",
             username : "root",
             password : "xiaohao"
         }
